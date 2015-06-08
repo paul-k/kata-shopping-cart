@@ -10,17 +10,18 @@ namespace Kata.Cart
         {
             var totalDiscount = 0;
 
-            var occuranceOfProductA = products.Count(x => x.Sku == "A");
-            var multiplesOfDiscountToAdd = Math.Floor((double)occuranceOfProductA / 3);
 
-            totalDiscount += (20 * (int)multiplesOfDiscountToAdd);
+            var occuranceOfProductA = products.Count(x => x.Sku == "A");
+            var multiplesOfDiscountAToAdd = Math.Floor((double)occuranceOfProductA / 3);
+
+            totalDiscount += (20 * (int)multiplesOfDiscountAToAdd);
             
 
             var occuranceOfProductB = products.Count(x => x.Sku == "B");
-            if (occuranceOfProductB == 2)
-            {
-                totalDiscount += 15;
-            }
+            var multiplesOfDiscountBToAdd = Math.Floor((double)occuranceOfProductB / 2);
+
+            totalDiscount += (15 * (int)multiplesOfDiscountBToAdd);
+
 
             return totalDiscount;
         }

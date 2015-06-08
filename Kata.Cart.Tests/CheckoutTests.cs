@@ -92,5 +92,19 @@ namespace Kata.Cart.Tests
 
             Assert.AreEqual(260, cart.GetTotal());
         }
+
+        [Test]
+        public void When_Product_B_Is_Scanned_Four_Times_The_Discount_Is_Applied_Twice_And_The_Value_Of_90_Is_Returned()
+        {
+            IProduct productB = new Product("B", 30);
+
+            cart.Scan(productB);
+            cart.Scan(productB);
+
+            cart.Scan(productB);
+            cart.Scan(productB);
+
+            Assert.AreEqual(90, cart.GetTotal());
+        }
     }
 }
