@@ -14,6 +14,12 @@
                 case "B":
                     total += 30;
                     break;
+                case "C":
+                    total += 20;
+                    break;
+                case "D":
+                    total += 15;
+                    break;
                 default:
                     break;
             }

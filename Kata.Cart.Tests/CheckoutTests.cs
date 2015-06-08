@@ -23,5 +23,23 @@ namespace Kata.Cart.Tests
 
             Assert.AreEqual(30, cart.GetTotal());
         }
+
+        [Test]
+        public void When_Product_C_Is_Scanned_The_Value_Of_20_Is_Returned()
+        {
+            var cart = new Checkout();
+            cart.Scan("C");
+
+            Assert.AreEqual(20, cart.GetTotal());
+        }
+
+        [Test]
+        public void When_Product_D_Is_Scanned_The_Value_Of_15_Is_Returned()
+        {
+            var cart = new Checkout();
+            cart.Scan("D");
+
+            Assert.AreEqual(15, cart.GetTotal());
+        }
     }
 }
