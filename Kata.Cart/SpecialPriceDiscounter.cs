@@ -1,5 +1,6 @@
-﻿using System.Linq;
+﻿using System;
 using System.Collections.Generic;
+using System.Linq;
 
 namespace Kata.Cart
 {
@@ -10,10 +11,10 @@ namespace Kata.Cart
             var totalDiscount = 0;
 
             var occuranceOfProductA = products.Count(x => x.Sku == "A");
-            if (occuranceOfProductA == 3)
-            {
-                totalDiscount += 20;
-            }
+            var multiplesOfDiscountToAdd = Math.Floor((double)occuranceOfProductA / 3);
+
+            totalDiscount += (20 * (int)multiplesOfDiscountToAdd);
+            
 
             var occuranceOfProductB = products.Count(x => x.Sku == "B");
             if (occuranceOfProductB == 2)
