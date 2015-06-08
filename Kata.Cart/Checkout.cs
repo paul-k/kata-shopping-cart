@@ -5,40 +5,29 @@ namespace Kata.Cart
 {
     public class Checkout : ICheckout
     {
-        private int total = 0;
-        private List<IProduct> items = new List<IProduct>();
+        private int _total;
+        private List<IProduct> _items;
+        private ISpecialPriceDiscounter _discounter;
+
+        public Checkout(ISpecialPriceDiscounter discounter)
+        {
+            _total = 0;
+            _items = new List<IProduct>();
+            _discounter = discounter;
+        }
 
         public void Scan(IProduct product)
         {
-            items.Add(product);
+            _items.Add(product);
 
-            total += product.Value;
+            _total += product.Value;
         }
 
         public int GetTotal()
         {
-            var discount = GetDiscount();
+            var discount = _discounter.GetTotalDiscount(_items);
 
-            return total - discount;
-        }
-
-        private int GetDiscount()
-        {
-            var totalDiscount = 0;
-
-            var occuranceOfProductA = items.Count(x => x.Sku == "A");
-            if (occuranceOfProductA == 3)
-            {
-                totalDiscount += 20;
-            }
-
-            var occuranceOfProductB = items.Count(x => x.Sku == "B");
-            if (occuranceOfProductB == 2)
-            {
-                totalDiscount += 15;
-            }
-
-            return totalDiscount;
+            return _total - discount;
         }
     }
 }

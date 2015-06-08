@@ -10,7 +10,8 @@ namespace Kata.Cart.Tests
         [SetUp]
         public void SetupForTests()
         {
-            cart = new Checkout();
+            ISpecialPriceDiscounter discounter = new SpecialPriceDiscounter();
+            cart = new Checkout(discounter);
         }
 
         [Test]
