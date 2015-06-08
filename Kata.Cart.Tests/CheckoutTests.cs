@@ -10,7 +10,11 @@ namespace Kata.Cart.Tests
         [SetUp]
         public void SetupForTests()
         {
-            ISpecialPriceDiscounter discounter = new SpecialPriceDiscounter();
+            ISpecialPrice discountForProductA = new SpecialPrice("A", 3, 20);
+            ISpecialPrice discountForProductB = new SpecialPrice("B", 2, 15);
+            var specialPrices = new[] { discountForProductA, discountForProductB };
+
+            ISpecialPriceDiscounter discounter = new SpecialPriceDiscounter(specialPrices);
             cart = new Checkout(discounter);
         }
 
