@@ -1,11 +1,17 @@
-﻿namespace Kata.Cart
+﻿using System.Collections.Generic;
+using System.Linq;
+
+namespace Kata.Cart
 {
     public class Checkout : ICheckout
     {
         private int total = 0;
+        private List<string> items = new List<string>();
 
         public void Scan(string sku)
         {
+            items.Add(sku);
+
             switch(sku)
             {
                 case "A":
@@ -27,7 +33,22 @@
 
         public int GetTotal()
         {
-            return total;
+            var discount = GetDiscount();
+
+            return total - discount;
+        }
+
+        private int GetDiscount()
+        {
+            var totalDiscount = 0;
+
+            var occuranceOfProductA = items.Count(x => x == "A");
+            if (occuranceOfProductA == 3)
+            {
+                totalDiscount += 20;
+            }
+
+            return totalDiscount;
         }
     }
 }
