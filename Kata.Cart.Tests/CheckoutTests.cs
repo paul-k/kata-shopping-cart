@@ -9,9 +9,10 @@ namespace Kata.Cart.Tests
         [Test]
         public void When_Product_A_Is_Scanned_The_Value_Of_50_Is_Returned()
         {
-            decimal result = 50;
+            var cart = new Checkout();
+            cart.Scan("A");
 
-            Assert.AreEqual(50, result);
+            Assert.AreEqual(50, cart.GetTotal());
         }
     }
 }
