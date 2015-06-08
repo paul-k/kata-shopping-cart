@@ -1,5 +1,4 @@
-﻿using System;
-using NUnit.Framework;
+﻿using NUnit.Framework;
 
 namespace Kata.Cart.Tests
 {
@@ -17,7 +16,9 @@ namespace Kata.Cart.Tests
         [Test]
         public void When_Product_A_Is_Scanned_The_Value_Of_50_Is_Returned()
         {
-            cart.Scan("A");
+            IProduct productA = new Product("A", 50);
+
+            cart.Scan(productA);
 
             Assert.AreEqual(50, cart.GetTotal());
         }
@@ -25,7 +26,9 @@ namespace Kata.Cart.Tests
         [Test]
         public void When_Product_B_Is_Scanned_The_Value_Of_30_Is_Returned()
         {
-            cart.Scan("B");
+            IProduct productB = new Product("B", 30);
+
+            cart.Scan(productB);
 
             Assert.AreEqual(30, cart.GetTotal());
         }
@@ -33,7 +36,9 @@ namespace Kata.Cart.Tests
         [Test]
         public void When_Product_C_Is_Scanned_The_Value_Of_20_Is_Returned()
         {
-            cart.Scan("C");
+            IProduct productC = new Product("C", 20);
+
+            cart.Scan(productC);
 
             Assert.AreEqual(20, cart.GetTotal());
         }
@@ -41,7 +46,9 @@ namespace Kata.Cart.Tests
         [Test]
         public void When_Product_D_Is_Scanned_The_Value_Of_15_Is_Returned()
         {
-            cart.Scan("D");
+            IProduct productD = new Product("D", 15);
+
+            cart.Scan(productD);
 
             Assert.AreEqual(15, cart.GetTotal());
         }
@@ -49,9 +56,11 @@ namespace Kata.Cart.Tests
         [Test]
         public void When_Product_A_Is_Scanned_Three_Times_The_Value_Of_130_Is_Returned()
         {
-            cart.Scan("A");
-            cart.Scan("A");
-            cart.Scan("A");
+            IProduct productA = new Product("A", 50);
+
+            cart.Scan(productA);
+            cart.Scan(productA);
+            cart.Scan(productA);
 
             Assert.AreEqual(130, cart.GetTotal());
         }
@@ -59,8 +68,10 @@ namespace Kata.Cart.Tests
         [Test]
         public void When_Product_B_Is_Scanned_Two_Times_The_Value_Of_45_Is_Returned()
         {
-            cart.Scan("B");
-            cart.Scan("B");
+            IProduct productB = new Product("B", 30);
+
+            cart.Scan(productB);
+            cart.Scan(productB);
 
             Assert.AreEqual(45, cart.GetTotal());
         }

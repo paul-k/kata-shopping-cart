@@ -6,29 +6,13 @@ namespace Kata.Cart
     public class Checkout : ICheckout
     {
         private int total = 0;
-        private List<string> items = new List<string>();
+        private List<IProduct> items = new List<IProduct>();
 
-        public void Scan(string sku)
+        public void Scan(IProduct product)
         {
-            items.Add(sku);
+            items.Add(product);
 
-            switch(sku)
-            {
-                case "A":
-                    total += 50;
-                    break;
-                case "B":
-                    total += 30;
-                    break;
-                case "C":
-                    total += 20;
-                    break;
-                case "D":
-                    total += 15;
-                    break;
-                default:
-                    break;
-            }
+            total += product.Value;
         }
 
         public int GetTotal()
@@ -42,13 +26,13 @@ namespace Kata.Cart
         {
             var totalDiscount = 0;
 
-            var occuranceOfProductA = items.Count(x => x == "A");
+            var occuranceOfProductA = items.Count(x => x.Sku == "A");
             if (occuranceOfProductA == 3)
             {
                 totalDiscount += 20;
             }
 
-            var occuranceOfProductB = items.Count(x => x == "B");
+            var occuranceOfProductB = items.Count(x => x.Sku == "B");
             if (occuranceOfProductB == 2)
             {
                 totalDiscount += 15;
