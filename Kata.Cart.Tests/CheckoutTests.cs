@@ -55,5 +55,14 @@ namespace Kata.Cart.Tests
 
             Assert.AreEqual(130, cart.GetTotal());
         }
+
+        [Test]
+        public void When_Product_B_Is_Scanned_Two_Times_The_Value_Of_45_Is_Returned()
+        {
+            cart.Scan("B");
+            cart.Scan("B");
+
+            Assert.AreEqual(45, cart.GetTotal());
+        }
     }
 }

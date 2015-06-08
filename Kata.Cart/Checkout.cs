@@ -48,6 +48,12 @@ namespace Kata.Cart
                 totalDiscount += 20;
             }
 
+            var occuranceOfProductB = items.Count(x => x == "B");
+            if (occuranceOfProductB == 2)
+            {
+                totalDiscount += 15;
+            }
+
             return totalDiscount;
         }
     }
